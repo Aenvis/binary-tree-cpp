@@ -1,5 +1,8 @@
 #include "BinaryTree.h"
 
+#include <algorithm>
+#include <stdlib.h>
+
 BinaryTree::BinaryTree() : rootPtr(nullptr)
 {
 }
@@ -61,4 +64,16 @@ int BinaryTree::FindMax()
 	if (rootPtr == nullptr) return -1;
 	return FindMax(rootPtr);
 }
+
+int BinaryTree::GetHeight(Node* ptr)
+{
+	if (ptr == nullptr) return -1;
+
+	return std::max(GetHeight(ptr->left), GetHeight(ptr->right)) + 1;
+}
+int BinaryTree::GetHeight()
+{
+	return GetHeight(rootPtr);
+}
+
 

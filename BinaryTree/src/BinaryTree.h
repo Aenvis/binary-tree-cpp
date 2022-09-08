@@ -15,6 +15,7 @@ private:
 	bool Search(Node* ptr, int data);
 	int FindMin(Node* ptr);
 	int FindMax(Node* ptr);
+	int GetHeight(Node* ptr);
 public:
 	BinaryTree();
 	Node* GetNewNode(int data);
@@ -22,5 +23,6 @@ public:
 	bool Search(int data);
 	int FindMin();
 	int FindMax();
+	int GetHeight();
 };
 

@@ -5,8 +5,11 @@
 int main() {
 	BinaryTree tree;
 	tree.Insert(5);
+	tree.Insert(5);
+	tree.Insert(5);
 
-	std::cout << tree.FindMax();
+
+	std::cout << tree.GetHeight();
 
 	std::cin.get();
 }
