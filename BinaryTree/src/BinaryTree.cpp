@@ -34,6 +34,10 @@ bool BinaryTree::Search(Node* ptr, int data)
 
 	return false;
 }
+bool BinaryTree::Search(int data)
+{
+	return Search(rootPtr, data);
+}
 
 int BinaryTree::FindMin(Node* ptr)
 {
@@ -47,18 +51,14 @@ int BinaryTree::FindMax(Node* ptr)
 
 	return ptr->data;
 }
-bool BinaryTree::Search(int data)
-{
-	return Search(rootPtr, data);
-}
-
 int BinaryTree::FindMin()
 {
+	if (rootPtr == nullptr) return -1;
 	return FindMin(rootPtr);
 }
-
 int BinaryTree::FindMax()
 {
+	if (rootPtr == nullptr) return -1;
 	return FindMax(rootPtr);
 }
 
