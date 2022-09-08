@@ -41,11 +41,19 @@ bool BinaryTree::Search(int data)
 
 int BinaryTree::FindMin()
 {
-	return 0;
+	Node* current = rootPtr;
+
+	while (current->left != nullptr) current = current->left;
+
+	return current->data;
 }
 
 int BinaryTree::FindMax()
 {
-	return 0;
+	Node* current = rootPtr;
+
+	while (current->right != nullptr) current = current->right;
+
+	return current->data;
 }
 
