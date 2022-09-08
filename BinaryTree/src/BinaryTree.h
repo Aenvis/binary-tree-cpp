@@ -13,7 +13,8 @@ private:
 	
 	Node* Insert(Node* ptr, int data);
 	bool Search(Node* ptr, int data);
-
+	int FindMin(Node* ptr);
+	int FindMax(Node* ptr);
 public:
 	BinaryTree();
 	Node* GetNewNode(int data);

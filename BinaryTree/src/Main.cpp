@@ -9,7 +9,7 @@ int main() {
 	tree.Insert(3);
 	tree.Insert(8);
 
-	std::cout << tree.FindMax();
+	std::cout << tree.FindMin();
 
 	std::cin.get();
 }
