@@ -76,6 +76,7 @@ int BinaryTree::GetRootHeight()
 	return _getRootHeight(m_rootPtr);
 }
 
+#pragma region Traversal -- Depth-first strategy
 void BinaryTree::_preorderTraversal(Node* ptr)
 {
 	if (ptr == nullptr) return;
@@ -114,5 +115,7 @@ void BinaryTree::PostorderTraversal()
 {
 	_postorderTraversal(m_rootPtr);
 }
+#pragma endregion
+
 
 
