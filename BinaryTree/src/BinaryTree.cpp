@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <stdlib.h>
 
-BinaryTree::BinaryTree() : rootPtr(nullptr)
+BinaryTree::BinaryTree() : m_rootPtr(nullptr)
 {
 }
 Node* BinaryTree::GetNewNode(int data)
@@ -15,79 +15,104 @@ Node* BinaryTree::GetNewNode(int data)
 	return newNode;
 }
 
-Node* BinaryTree::Insert(Node* nodePtr, int data)
+Node* BinaryTree::_insert(Node* nodePtr, int data)
 {
 	if (nodePtr == nullptr) nodePtr = GetNewNode(data);
-	else if (data <= nodePtr->data) nodePtr->left = Insert(nodePtr->left, data);
-	else nodePtr->right = Insert(nodePtr->right, data);
+	else if (data <= nodePtr->data) nodePtr->left = _insert(nodePtr->left, data);
+	else nodePtr->right = _insert(nodePtr->right, data);
 
 	return nodePtr;
 }
 void BinaryTree::Insert(int data)
 {
-	rootPtr = Insert(rootPtr, data);
+	m_rootPtr = _insert(m_rootPtr, data);
 }
 
-bool BinaryTree::Search(Node* ptr, int data)
+bool BinaryTree::_search(Node* ptr, int data)
 {
 	if (ptr == nullptr) return false;
 	else if (ptr->data == data) return true;
-	else if (data <= ptr->data) return Search(ptr->left, data);
-	else return Search(ptr->right, data);
+	else if (data <= ptr->data) return _search(ptr->left, data);
+	else return _search(ptr->right, data);
 
 	return false;
 }
 bool BinaryTree::Search(int data)
 {
-	return Search(rootPtr, data);
+	return _search(m_rootPtr, data);
 }
 
-int BinaryTree::FindMin(Node* ptr)
+int BinaryTree::_findMin(Node* ptr)
 {
-	if (ptr->left != nullptr) return FindMin(ptr->left);
+	if (ptr->left != nullptr) return _findMin(ptr->left);
 	
 	return ptr->data;
 }
-int BinaryTree::FindMax(Node* ptr)
+int BinaryTree::_findMax(Node* ptr)
 {
-	if (ptr->right != nullptr) return FindMax(ptr->right);
+	if (ptr->right != nullptr) return _findMax(ptr->right);
 
 	return ptr->data;
 }
 int BinaryTree::FindMin()
 {
-	if (rootPtr == nullptr) return -1;
-	return FindMin(rootPtr);
+	if (m_rootPtr == nullptr) return -1;
+	return _findMin(m_rootPtr);
 }
 int BinaryTree::FindMax()
 {
-	if (rootPtr == nullptr) return -1;
-	return FindMax(rootPtr);
+	if (m_rootPtr == nullptr) return -1;
+	return _findMax(m_rootPtr);
 }
 
-int BinaryTree::GetRootHeight(Node* ptr)
+int BinaryTree::_getRootHeight(Node* ptr)
 {
 	if (ptr == nullptr) return -1;
 
-	return std::max(GetRootHeight(ptr->left), GetRootHeight(ptr->right)) + 1;
+	return std::max(_getRootHeight(ptr->left), _getRootHeight(ptr->right)) + 1;
 }
 int BinaryTree::GetRootHeight()
 {
-	return GetRootHeight(rootPtr);
+	return _getRootHeight(m_rootPtr);
 }
 
-void BinaryTree::PreorderTraversal(Node* ptr)
+void BinaryTree::_preorderTraversal(Node* ptr)
 {
 	if (ptr == nullptr) return;
 
 	std::cout << ptr->data << " ";
 
-	PreorderTraversal(ptr->left);
-	PreorderTraversal(ptr->right);
+	_preorderTraversal(ptr->left);
+	_preorderTraversal(ptr->right);
 }
 void BinaryTree::PreorderTraversal()
 {
-	PreorderTraversal(rootPtr);
+	_preorderTraversal(m_rootPtr);
+}
+
+void BinaryTree::_inorderTraversal(Node* ptr)
+{
+	if (ptr == nullptr) return;
+	_inorderTraversal(ptr->left);
+	std::cout << ptr->data << " ";
+	_inorderTraversal(ptr->right);
+}
+void BinaryTree::InorderTraversal()
+{
+	_inorderTraversal(m_rootPtr);
+}
+
+void BinaryTree::_postorderTraversal(Node* ptr)
+{
+	if (ptr == nullptr) return;
+	_postorderTraversal(ptr->left);
+	_postorderTraversal(ptr->right);
+	std::cout << ptr->data << " ";
+}
+
+void BinaryTree::PostorderTraversal()
+{
+	_postorderTraversal(m_rootPtr);
 }
 
 

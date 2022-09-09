@@ -9,14 +9,16 @@ struct Node
 class BinaryTree
 {
 private:
-	Node* rootPtr;
+	Node* m_rootPtr;
 	
-	Node* Insert(Node* ptr, int data);
-	bool Search(Node* ptr, int data);
-	int FindMin(Node* ptr);
-	int FindMax(Node* ptr);
-	int GetRootHeight(Node* ptr);
-	void PreorderTraversal(Node* ptr);
+	Node* _insert(Node* ptr, int data);
+	bool _search(Node* ptr, int data);
+	int _findMin(Node* ptr);
+	int _findMax(Node* ptr);
+	int _getRootHeight(Node* ptr);
+	void _preorderTraversal(Node* ptr);
+	void _inorderTraversal(Node* ptr);
+	void _postorderTraversal(Node* ptr);
 public:
 	BinaryTree();
 	Node* GetNewNode(int data);
@@ -26,5 +28,7 @@ public:
 	int FindMax();
 	int GetRootHeight();
 	void PreorderTraversal();
+	void InorderTraversal();
+	void PostorderTraversal();
 };
 
