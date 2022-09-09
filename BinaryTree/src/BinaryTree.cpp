@@ -138,3 +138,32 @@ void BinaryTree::LevelOrderTraversal()
 }
 #pragma endregion
 
+bool BinaryTree::_checkIfBST(Node* ptr)
+{
+	if (m_rootPtr == nullptr) return true;
+
+	if (ptr->left != nullptr)
+	{
+		if (ptr->left->data > ptr->data) return false;
+		_checkIfBST(ptr->left);
+	}
+	if (ptr->right != nullptr)
+	{
+		if (ptr->right->data <= ptr->data) return false;
+		_checkIfBST(ptr->right);
+	}
+
+	return true;
+}
+bool BinaryTree::CheckIfBST()
+{
+	return _checkIfBST(m_rootPtr);
+}
+
+#pragma region dev
+void BinaryTree::dev_ForceLeftLink(int data)
+{
+	Node* temp = GetNewNode(data);
+	m_rootPtr->left = temp;
+}
+#pragma endregion

@@ -19,6 +19,7 @@ private:
 	void _preorderTraversal(Node* ptr);
 	void _inorderTraversal(Node* ptr);
 	void _postorderTraversal(Node* ptr);
+	bool _checkIfBST(Node* ptr); //Check if a binary tree is the binary search tree
 public:
 	BinaryTree();
 	Node* GetNewNode(int data);
@@ -31,5 +32,9 @@ public:
 	void InorderTraversal();
 	void PostorderTraversal();
 	void LevelOrderTraversal();
+	bool CheckIfBST();
+
+public:
+	void dev_ForceLeftLink(int data);
 };
 
