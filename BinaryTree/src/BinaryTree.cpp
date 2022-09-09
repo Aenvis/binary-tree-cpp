@@ -140,20 +140,34 @@ void BinaryTree::LevelOrderTraversal()
 
 bool BinaryTree::_checkIfBST(Node* ptr)
 {
-	if (m_rootPtr == nullptr) return true;
+	if (ptr == nullptr) return true;
 
-	if (ptr->left != nullptr)
-	{
-		if (ptr->left->data > ptr->data) return false;
-		_checkIfBST(ptr->left);
-	}
-	if (ptr->right != nullptr)
-	{
-		if (ptr->right->data <= ptr->data) return false;
-		_checkIfBST(ptr->right);
-	}
+	if (_isSubtreeLesser(ptr->left, ptr->data) &&
+		_isSubtreeGreater(ptr->right, ptr->data) &&
+		_checkIfBST(ptr->left) &&
+		_checkIfBST(ptr->right)) return true;
+	
+	return false;
+}
+bool BinaryTree::_isSubtreeLesser(Node* ptr, int data)
+{
+	if (ptr == nullptr) return true;
 
-	return true;
+	if (ptr->data <= data &&
+		_isSubtreeLesser(ptr->left, data) &&
+		_isSubtreeLesser(ptr->right, data)) return true;
+	
+	return false;
+}
+bool BinaryTree::_isSubtreeGreater(Node* ptr, int data)
+{
+	if (ptr == nullptr) return true;
+
+	if (ptr->data > data &&
+		_isSubtreeGreater(ptr->left, data) &&
+		_isSubtreeGreater(ptr->right, data)) return true;
+	
+	return false;
 }
 bool BinaryTree::CheckIfBST()
 {
