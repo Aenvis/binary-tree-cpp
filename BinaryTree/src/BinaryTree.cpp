@@ -1,5 +1,5 @@
 #include "BinaryTree.h"
-
+#include <iostream>
 #include <algorithm>
 #include <stdlib.h>
 
@@ -74,6 +74,20 @@ int BinaryTree::GetRootHeight(Node* ptr)
 int BinaryTree::GetRootHeight()
 {
 	return GetRootHeight(rootPtr);
+}
+
+void BinaryTree::PreorderTraversal(Node* ptr)
+{
+	if (ptr == nullptr) return;
+
+	std::cout << ptr->data << " ";
+
+	PreorderTraversal(ptr->left);
+	PreorderTraversal(ptr->right);
+}
+void BinaryTree::PreorderTraversal()
+{
+	PreorderTraversal(rootPtr);
 }
 
 

@@ -16,6 +16,7 @@ private:
 	int FindMin(Node* ptr);
 	int FindMax(Node* ptr);
 	int GetRootHeight(Node* ptr);
+	void PreorderTraversal(Node* ptr);
 public:
 	BinaryTree();
 	Node* GetNewNode(int data);
@@ -24,5 +25,6 @@ public:
 	int FindMin();
 	int FindMax();
 	int GetRootHeight();
+	void PreorderTraversal();
 };
 
