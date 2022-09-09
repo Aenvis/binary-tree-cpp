@@ -65,15 +65,15 @@ int BinaryTree::FindMax()
 	return FindMax(rootPtr);
 }
 
-int BinaryTree::GetHeight(Node* ptr)
+int BinaryTree::GetRootHeight(Node* ptr)
 {
 	if (ptr == nullptr) return -1;
 
-	return std::max(GetHeight(ptr->left), GetHeight(ptr->right)) + 1;
+	return std::max(GetRootHeight(ptr->left), GetRootHeight(ptr->right)) + 1;
 }
-int BinaryTree::GetHeight()
+int BinaryTree::GetRootHeight()
 {
-	return GetHeight(rootPtr);
+	return GetRootHeight(rootPtr);
 }
 
 
