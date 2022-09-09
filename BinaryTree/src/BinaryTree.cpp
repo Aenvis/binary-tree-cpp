@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stdlib.h>
+#include <queue>
 
 BinaryTree::BinaryTree() : m_rootPtr(nullptr)
 {
@@ -15,6 +16,7 @@ Node* BinaryTree::GetNewNode(int data)
 	return newNode;
 }
 
+#pragma region Basic data structure functionality
 Node* BinaryTree::_insert(Node* nodePtr, int data)
 {
 	if (nodePtr == nullptr) nodePtr = GetNewNode(data);
@@ -75,6 +77,7 @@ int BinaryTree::GetRootHeight()
 {
 	return _getRootHeight(m_rootPtr);
 }
+#pragma endregion
 
 #pragma region Traversal -- Depth-first strategy
 void BinaryTree::_preorderTraversal(Node* ptr)
@@ -110,12 +113,28 @@ void BinaryTree::_postorderTraversal(Node* ptr)
 	_postorderTraversal(ptr->right);
 	std::cout << ptr->data << " ";
 }
-
 void BinaryTree::PostorderTraversal()
 {
 	_postorderTraversal(m_rootPtr);
 }
 #pragma endregion
 
+#pragma region Traversal -- Breadth-first strategy
+void BinaryTree::LevelOrderTraversal()
+{
+	if (m_rootPtr == nullptr) return;
 
+	std::queue<Node*> q;
+	q.push(m_rootPtr);
+	Node* current;
+	while (!q.empty())
+	{
+		current = q.front();
+		std::cout << current->data << " ";
+		if(current->left != nullptr) q.push(current->left);
+		if (current->right != nullptr) q.push(current->right);
+		q.pop();
+	}
+}
+#pragma endregion
 

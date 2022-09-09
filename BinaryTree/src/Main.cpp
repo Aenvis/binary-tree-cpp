@@ -16,7 +16,7 @@ int main() {
 	tree.Insert(0);
 	tree.Insert(3);
 
-	tree.PostorderTraversal();
+	tree.LevelOrderTraversal();
 
 	std::cin.get();
 }

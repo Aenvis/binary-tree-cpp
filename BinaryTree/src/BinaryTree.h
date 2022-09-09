@@ -30,5 +30,6 @@ public:
 	void PreorderTraversal();
 	void InorderTraversal();
 	void PostorderTraversal();
+	void LevelOrderTraversal();
 };
 
