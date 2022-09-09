@@ -138,14 +138,14 @@ void BinaryTree::LevelOrderTraversal()
 }
 #pragma endregion
 
-bool BinaryTree::_checkIfBST(Node* ptr)
+#pragma region BST check
+bool BinaryTree::_checkIfBST(Node* ptr, int minValue, int maxValue)
 {
 	if (ptr == nullptr) return true;
 
-	if (_isSubtreeLesser(ptr->left, ptr->data) &&
-		_isSubtreeGreater(ptr->right, ptr->data) &&
-		_checkIfBST(ptr->left) &&
-		_checkIfBST(ptr->right)) return true;
+	if (ptr->data >= minValue && ptr->data <= maxValue &&
+		_checkIfBST(ptr->left, minValue, ptr->data) &&
+		_checkIfBST(ptr->right, ptr->data, maxValue)) return true;
 	
 	return false;
 }
@@ -171,8 +171,9 @@ bool BinaryTree::_isSubtreeGreater(Node* ptr, int data)
 }
 bool BinaryTree::CheckIfBST()
 {
-	return _checkIfBST(m_rootPtr);
+	return _checkIfBST(m_rootPtr, INT_MIN, INT_MAX);
 }
+#pragma endregion
 
 #pragma region dev
 void BinaryTree::dev_ForceLeftLink(int data)

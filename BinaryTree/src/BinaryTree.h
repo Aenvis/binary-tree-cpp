@@ -19,7 +19,7 @@ private:
 	void _preorderTraversal(Node* ptr);
 	void _inorderTraversal(Node* ptr);
 	void _postorderTraversal(Node* ptr);
-	bool _checkIfBST(Node* ptr); //Check if a binary tree is the binary search tree
+	bool _checkIfBST(Node* ptr, int minValue, int maxValue); //Check if a binary tree is the binary search tree
 	bool _isSubtreeLesser(Node* ptr, int data);
 	bool _isSubtreeGreater(Node* ptr, int data);
 public:
