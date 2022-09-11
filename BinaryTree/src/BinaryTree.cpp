@@ -175,6 +175,42 @@ bool BinaryTree::CheckIfBST()
 }
 #pragma endregion
 
+void BinaryTree::_delete(Node* ptr, int data)
+{
+/*	if (ptr == nullptr) return;
+	else if (data < ptr->data) _delete(ptr->left, data);
+	else if (data > ptr->data) _delete(ptr->right, data);
+	else
+	{
+		//case 1: no child
+		if (ptr->left == nullptr && ptr->right == nullptr)
+		{
+			delete ptr;
+			ptr = nullptr;
+		}
+		else if (ptr->left == nullptr)
+		{
+			Node* temp = ptr;
+			ptr = ptr->right;
+			delete temp;
+		}
+		else if (ptr->right == nullptr)
+		{
+			Node* temp = ptr;
+			ptr = ptr->left;
+			delete temp;
+		}
+		else
+		{
+
+		}
+	}*/
+}
+void BinaryTree::Delete(int data)
+{
+	_delete(m_rootPtr, data);.
+}
+
 #pragma region dev
 void BinaryTree::dev_ForceLeftLink(int data)
 {
