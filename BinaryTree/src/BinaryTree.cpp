@@ -208,7 +208,7 @@ void BinaryTree::_delete(Node* ptr, int data)
 }
 void BinaryTree::Delete(int data)
 {
-	_delete(m_rootPtr, data);.
+	_delete(m_rootPtr, data);
 }
 
 #pragma region dev
